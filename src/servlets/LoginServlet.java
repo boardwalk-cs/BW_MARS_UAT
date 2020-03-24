@@ -362,7 +362,7 @@ public class LoginServlet extends HttpServlet implements SingleThreadModel {
 
     public void init(ServletConfig config) throws ServletException
 	{
-		BWLogger log = new BWLogger(System.out); //Added by Jeetendra to print the TimeStamp in Tomcat logs on 20170601
+		//BWLogger log = new BWLogger(System.out); //Added by Jeetendra to print the TimeStamp in Tomcat logs on 20170601
 		super.init(config);
 		if ( ! DatabaseLoader.databaseInit)
 		{
@@ -385,7 +385,8 @@ public class LoginServlet extends HttpServlet implements SingleThreadModel {
 			DatabaseLoader dbLoader = new DatabaseLoader(databaseProps,config.getServletContext());
 			//DatabaseLoader dbLoader = new DatabaseLoader(new Properties());//sjcd
 			
-			
+			BWLogger log = new BWLogger(System.out,"1"); //Added by Jeetendra to print the TimeStamp in Tomcat logs on 20170601
+
 			System.out.println("Database test");
 			Connection conn = null;
 			try
