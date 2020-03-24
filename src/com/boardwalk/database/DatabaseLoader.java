@@ -2,13 +2,19 @@
 // Classes: 1   Methods: 7   Fields: 1
 
 package com.boardwalk.database;
-
 import java.io.PrintStream;
 import java.sql.*;
 import java.util.Properties;
 import java.io.*;
 import javax.sql.DataSource;
 import java.lang.Runtime;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.text.SimpleDateFormat;
+
+
 
 public class DatabaseLoader
 {
@@ -64,8 +70,13 @@ public class DatabaseLoader
 				//DriverManager.registerDriver(new com.microsoft.jdbc.sqlserver.SQLServerDriver());
 				//jdbcConnectionString = "jdbc:microsoft:sqlserver://"+server+":"+port+";DatabaseName="+databasename+";sendStringParametersAsUnicode=true"+ ";user="+user+";password="+password;
 
-				Class.forName("net.sourceforge.jtds.jdbc.Driver");
-				jdbcConnectionString = "jdbc:jtds:sqlserver://" + server + ":" + port;
+				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver"); 
+				//jdbcConnectionString = "jdbc:jtds:sqlserver://" + server + ":" + port;
+				
+				
+				
+				/*SQLAZURECONNSTR_boardwalkclient_RIC=jdbc:sqlserver://bw-eny-sb.database.windows.net:1433;DatabaseName=BW-ENY-RIC;sendStringParametersAsUnicode=true;user=bwappuser;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;password=Boardwalk@1032*/
+
 
 /*				//Code for SSL - START
 				//With JTDS
@@ -82,9 +93,17 @@ public class DatabaseLoader
 */
 
 				if (!((InstanceName.trim().equals("")) || InstanceName.trim().equalsIgnoreCase("default")))
-					jdbcConnectionString = jdbcConnectionString + ";instance=" + InstanceName;
+					//jdbcConnectionString = jdbcConnectionString + ";instance=" + InstanceName;
 				
-				jdbcConnectionString = jdbcConnectionString + ";DatabaseName="+databasename+";sendStringParametersAsUnicode=true"+ ";user="+user+";password="+password;
+				/*jdbcConnectionString = jdbcConnectionString + ";DatabaseName="+databasename+";sendStringParametersAsUnicode=true"+ ";user="+user+";password="+password;
+				jdbcConnectionString += ";encrypt=true;hostNameInCertificate=*.database.windows.net;loginTimeout=30";*/
+				
+				jdbcConnectionString ="jdbc:sqlserver://"+server+":" +port+ ";DatabaseName="+databasename+";sendStringParametersAsUnicode=true;user="+user+";encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;password="+password;
+				jdbcConnectionString = "jdbc:sqlserver://marsanalyticsdevsqlsrv.database.windows.net:1433;DatabaseName=aohusmwtpodevdevsqldb1;sendStringParametersAsUnicode=true;user=BWUSER;encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;password=#@BOARDWALK_65432m";
+				
+				
+				System.out.println("jdbcConnectionString NEW--------------> "+jdbcConnectionString);
+				
 				//System.out.println("jdbcConnectionString --------------> "+jdbcConnectionString);
 				queryLoader = new  QueryLoader(properties);
 
