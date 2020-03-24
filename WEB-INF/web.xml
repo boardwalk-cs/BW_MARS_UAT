@@ -249,7 +249,7 @@
 
 		<init-param>
 			<param-name>databasename</param-name>
-			<param-value>BW_MARS_UAT</param-value>
+			<param-value>aohusmwtpodevdevsqldb1</param-value>
 		</init-param>
 
 		<init-param>
@@ -264,17 +264,17 @@
 
 		<init-param>
 			<param-name>user</param-name>
-			<param-value>BOARDWALK_APPLICATION_USER</param-value>
+			<param-value>BWUSER</param-value>
 		</init-param>
 
 		<init-param>
 			<param-name>password</param-name>
-			<param-value>BOARDWALK_APPLICATION_USER</param-value>
+			<param-value>#@BOARDWALK_65432m</param-value>
 		</init-param>
 
 		<init-param>
 			<param-name>server</param-name>
-			<param-value>localhost</param-value>
+			<param-value>marsanalyticsdevsqlsrv.database.windows.net</param-value>
 		</init-param>
 
 		<init-param>
